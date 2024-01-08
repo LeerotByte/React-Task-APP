@@ -1,5 +1,7 @@
 import {useState, useContext} from 'react'
 import {TaskContext} from '../context/TaskContext'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField';
 
 
 function TaskForm() {
@@ -21,24 +23,27 @@ function TaskForm() {
 
   return (
     <div className='max-w-md mx-auto'>
-        <form onSubmit={handleSubmit} className='bg-slate-800 p-10 mb-4'>
-        <h1 className='text-2x1 font-bold text-white mb-3'>Crea tu tarea</h1>
-        <input placeholder='Escribe tu tarea'
+        <form onSubmit={handleSubmit} className='bg-gray-800 p-10 mb-4 rounded-sm'>
+        <h1 className='text-3xl text-center font-mono font-bold text-white mb-3'>Crea tu tarea</h1>
+        
+        { <input placeholder='Escribe tu tarea'
         onChange={(e) => {
             setTitle(e.target.value)
         }} 
         value={title} autoFocus
-        className='bg-slate-300 p-3 w-full mb-2'/>
+        maxLength={20}
+        className='bg-slate-300 p-3 w-full mb-2 rounded-sm'/> }
+      
 
-        <textarea placeholder='Escribe la descripcion de esta tarea' 
+        { <textarea placeholder='Escribe la descripcion de esta tarea' 
         onChange={(e) => {
             setDescription(e.target.value)
         }} value={description}
-        className='bg-slate-300 p-3 w-full mb-2'></textarea>
+        maxLength={40}
+        className='bg-slate-300 p-3 w-full mb-2 rounded-sm'></textarea> }
 
-        <button
-        className='bg-indigo-500 px-3 py-1 text-white'
-        >Guardar</button>
+        <button><Button variant="contained" color='success'>Guardar</Button></button>
+        
 
         </form>
     </div>
